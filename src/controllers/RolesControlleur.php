@@ -1,9 +1,11 @@
 <?php
 namespace src\Controllers;
-class RolesControlleur
+use libs\system\Controller;
+
+class RolesControlleur extends Controller
 {
     public function add()
     {
-        echo 2;
+        return $this->view->load("roles/add");
     }
 }

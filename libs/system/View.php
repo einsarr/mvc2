@@ -17,7 +17,7 @@ class View
         switch($num)
         {
             case 1:
-                $file = "views/".$args[0].".php";
+                $file = "src/views/".$args[0].".php";
                 if(file_exists($file))
                 {
                     require_once $file;
@@ -27,7 +27,7 @@ class View
                 }
                 break;
             case 2:
-                $file = "views/".$args[0].".php";
+                $file = "src/views/".$args[0].".php";
                 if(file_exists($file))
                 {
                     $data = $args[1];
