@@ -1,5 +1,5 @@
 <?php
-class formations
+class Lieu
 {
     private $id;
     private $nom;
