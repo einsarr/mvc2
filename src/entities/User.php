@@ -1,17 +1,38 @@
 <?php
+use Doctrine\ORM\Annotations as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * @Entity @Table(name="user")
+ **/
 class User
 {
+    /** @Id @Column(Type="integer") @GeneratedValue */
     private $id;
+    /** @Column(type="string") **/
     private $nom;
+    /** @Column(type="string") **/
     private $prenom;
+    /** @Column(type="string") **/
     private $email;
+    /** @Column(type="string") **/
     private $password;
+    /**
+     * One User has many lieux. This is the inverse side.
+     * @OneToMany(targetEntity="Lieu", mappedBy="user")
+     */
     private $lieux;
+    /**
+     * Many Users have Many Roles.
+     * @ManyToMany(targetEntity="Roles", inversedBy="users")
+     * @JoinTable(name="users_roles")
+     */
     private $roles;
 
     public function __construct()
     {
-        
+        $this->lieux = new ArrayCollection();
+        $this->roles = new ArrayCollection();
     }
     public function getNom()
     {

@@ -1,14 +1,26 @@
 <?php
+use Doctrine\ORM\Annotations as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * @Entity @Table(name="roles")
+ **/
 class Formation
 {
+    /** @Id @Column(Type="integer") @GeneratedValue */
     private $id;
+    /** @Column(type="string") **/
     private $nom;
+    /**
+     * Many Roles have Many Users.
+     * @ManyToMany(targetEntity="User", mappedBy="roles")
+     */
     private $users;
     
 
     public function __construct()
     {
-       
+        $this->users = new ArrayCollection();
     }
     public function getId()
     {
