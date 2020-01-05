@@ -1,31 +1,44 @@
 <?php
-use Doctrine\ORM\Annotations as ORM;
+namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-
 /**
- * @Entity @Table(name="user")
- **/
+* @ORM\Entity()
+* @ORM\Table(name="user")
+**/
 class User
 {
-    /** @Id @Column(Type="integer") @GeneratedValue */
+    /**
+    * @ORM\Id()
+    * @ORM\GeneratedValue(strategy="AUTO")
+    * @ORM\Column(type="integer")
+    */
     private $id;
-    /** @Column(type="string") **/
+    /**
+    * @ORM\Column(type="string")
+    */
     private $nom;
-    /** @Column(type="string") **/
+    /**
+    * @ORM\Column(type="string")
+    */
     private $prenom;
-    /** @Column(type="string") **/
+    /**
+    * @ORM\Column(type="string")
+    */
     private $email;
-    /** @Column(type="string") **/
+    /**
+    * @ORM\Column(type="string")
+    */
     private $password;
     /**
      * One User has many lieux. This is the inverse side.
-     * @OneToMany(targetEntity="Lieu", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Lieu", mappedBy="user")
      */
     private $lieux;
     /**
      * Many Users have Many Roles.
-     * @ManyToMany(targetEntity="Roles", inversedBy="users")
-     * @JoinTable(name="users_roles")
+     * @ORM\ManyToMany(targetEntity="Roles", inversedBy="users")
+     * @ORM\JoinTable(name="users_roles")
      */
     private $roles;
 

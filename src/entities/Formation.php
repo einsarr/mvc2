@@ -1,23 +1,35 @@
 <?php
-use Doctrine\ORM\Annotations as ORM;
-
+namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 /**
- * @Entity @Table(name="formation")
- **/
+* @ORM\Entity()
+* @ORM\Table(name="formation")
+**/
 class Formation
 {
-    /** @Id @Column(Type="integer") @GeneratedValue */
+    /**
+    * @ORM\Id()
+    * @ORM\GeneratedValue(strategy="AUTO")
+    * @ORM\Column(type="integer")
+    */
     private $id;
-    /** @Column(type="string") **/
+    /**
+    * @ORM\Column(type="string")
+    */
     private $nom;
-    /** @Column(type="string") **/
+    /**
+    * @ORM\Column(type="datetime", name="date")
+    */
     private $date;
-    /** @Column(type="integer") **/
+    /**
+    * @ORM\Column(type="integer")
+    */
     private $duree;
     /**
      * Many formations have one lieu. This is the owning side.
-     * @ManyToOne(targetEntity="Lieu", inversedBy="formations")
-     * @JoinColumn(name="lieu_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Lieu", inversedBy="formations")
+     * @ORM\JoinColumn(name="lieu_id", referencedColumnName="id")
      */
     private $lieu;
     

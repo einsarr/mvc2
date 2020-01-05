@@ -1,29 +1,40 @@
 <?php
-use Doctrine\ORM\Annotations as ORM;
+namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-
 /**
- * @Entity @Table(name="formation")
- **/
+* @ORM\Entity()
+* @ORM\Table(name="lieu")
+**/
 class Lieu
 {
-    /** @Id @Column(Type="integer") @GeneratedValue */
+    /**
+    * @ORM\Id()
+    * @ORM\GeneratedValue(strategy="AUTO")
+    * @ORM\Column(type="integer")
+    */
     private $id;
-    /** @Column(type="string") **/
+    /**
+    * @ORM\Column(type="string")
+    */
     private $nom;
-    /** @Column(type="double") **/
+    /**
+    * @ORM\Column(type="decimal")
+    */
     private $longitude;
-    /** @Column(type="double") **/
+    /**
+    * @ORM\Column(type="decimal")
+    */
     private $latitude;
      /**
      * One lieu has many formations. This is the inverse side.
-     * @OneToMany(targetEntity="Formation", mappedBy="lieu")
+     * @ORM\OneToMany(targetEntity="Formation", mappedBy="lieu")
      */
     private $formations;
     /**
      * Many lieux have one user. This is the owning side.
-     * @ManyToOne(targetEntity="User", inversedBy="lieux")
-     * @JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="lieux")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 

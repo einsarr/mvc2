@@ -1,19 +1,26 @@
 <?php
-use Doctrine\ORM\Annotations as ORM;
+namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-
 /**
- * @Entity @Table(name="roles")
- **/
-class Formation
+* @ORM\Entity()
+* @ORM\Table(name="roles")
+**/
+class Roles
 {
-    /** @Id @Column(Type="integer") @GeneratedValue */
+    /**
+    * @ORM\Id()
+    * @ORM\GeneratedValue(strategy="AUTO")
+    * @ORM\Column(type="integer")
+    */
     private $id;
-    /** @Column(type="string") **/
+    /**
+    * @ORM\Column(type="string")
+    */
     private $nom;
     /**
      * Many Roles have Many Users.
-     * @ManyToMany(targetEntity="User", mappedBy="roles")
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="roles")
      */
     private $users;
     
