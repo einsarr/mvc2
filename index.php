@@ -6,4 +6,4 @@ require_once "config/autoload.php";
 
 $rolesDB = new RolesControlleur();
 
-$rolesDB->add();
+$rolesDB->getAll();

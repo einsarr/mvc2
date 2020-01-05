@@ -21,7 +21,7 @@ class Autoloader
         {
             require_once str_replace("\\","/",$class.".php");
         }else{
-            die("Mercid'utiliser le mot clé USE suivie de ".$class);
+            die("Merci d'utiliser le mot clé <b>use</b> suivie de <b>".$class."</b>");
         }
     }
 }
